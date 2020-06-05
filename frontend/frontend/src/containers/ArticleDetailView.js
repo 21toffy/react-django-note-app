@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Card} from 'antd';
-
-
-
+import CustomForm from '../components/Form';
 
 
 class ArticleDetail extends React.Component {
@@ -23,10 +21,17 @@ class ArticleDetail extends React.Component {
     }
     render() {
         return (
-            <Card title = {this.state.article.title}>
+            <div>
+                <Card title = {this.state.article.title}>
                 <p>{this.state.article.content}</p>
                 <small><br></br><b>{this.state.article.timestamp}</b></small>
-            </Card>
+                </Card>
+                <CustomForm
+                requestType = "put"
+                articleID = {this.props.match.params.articleID}
+                btnText = "udate"
+                />
+            </div>
         )
     }
 }

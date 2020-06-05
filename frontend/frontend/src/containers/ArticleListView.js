@@ -26,7 +26,11 @@ class ArticleList extends React.Component {
             <div>
                 <Card title ='Create your Notes here'>
                 {/* <h4>Create your Notes here</h4> */}
-                <CustomForm/>
+                <CustomForm
+                requestType = "post"
+                articleID = {null}
+                btnText = "Create"
+                />
                 </Card>
                 <br />
                 <Articles data = {this.state.articles}/>

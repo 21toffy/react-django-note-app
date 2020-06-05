@@ -1,43 +1,67 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
+import axios from 'axios';
 const FormItem = Form.Item;
 
 
-class CustomForm extends React.Component{
-    handleFormSubmit = (event) =>{
-        event.preventDefault();
-        const title = event.target.elements.title.value;
-        const content = event.target.elements.content.value;
+const CustomForm = props => {
+  const handleFormSubmit = (event, requestType, articleID) => {
+    event.preventDefault();
+    const title = event.target.elements.title.value;
+    const content = event.target.elements.content.value;
+    axios.defaults.headers = {
+      "Content-Type": "application/json",
+      Authorization: props.token
+    };
 
-        console.log(title, content);
-        console.log('dvbj')
+    let data = {
+      title: title,
+      content: content
+    };
 
+    switch (requestType) {
+      case "post":
+        return axios
+          .post("http://127.0.0.1:8000/blog/", data)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(err => console.error(err));
+
+      case "put":
+        return axios
+          .put(`http://127.0.0.1:8000/blog/${articleID}/`, data)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(err => console.error(err));
+
+      default:
+        break;
     }
-
-
-   render(){
-       return (
-         <div>
-           <Form onSubmit={this.handleFormSubmit}>
-
-             <FormItem label="Title">
-               <Input name = "title" placeholder="Enter your title here" />
-             </FormItem>
-
-             <FormItem label="Body">
-               <Input name = "content" placeholder="input Body ...." />
-             </FormItem>
-
-             <FormItem >
-               <Button type="primary" htmlType = "submit" >Post</Button>
-             </FormItem>
-
-           </Form>
-         </div>
-       );
-       
-   } 
-}
+  };
+  return (
+    <div>
+      <Form
+        onSubmit={event =>
+          handleFormSubmit(event, props.requestType, props.articleID)
+        }
+      >
+        <Form.Item label="Title">
+          <Input name="title" placeholder="title here" />
+        </Form.Item>
+        <Form.Item label="content">
+          <Input name="content" placeholder="some content here" />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            {props.btnText}
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
+};
 
 export default CustomForm;
 
