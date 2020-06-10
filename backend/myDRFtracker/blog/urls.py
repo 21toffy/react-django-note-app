@@ -16,12 +16,11 @@ urlpatterns = [
 
     path('', views.BlogListCreateView.as_view()),
     path('<pk>/', views.BlogRetrieveView.as_view()),
+    path('current_user/', views.current_user),
+    path('users/', views.UserList.as_view())
 
-    # path('blog/create', views.BlogCreateView.as_view()),
 
-    # path('blog/<pk>/', views.BlogDetailView.as_view()),
 
-    # path('create/<pk>', views.BlogCreateView.as_view()),
     
 ]
 
