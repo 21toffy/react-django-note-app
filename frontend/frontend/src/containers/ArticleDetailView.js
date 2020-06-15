@@ -29,7 +29,7 @@ class ArticleDetail extends React.Component {
                 <CustomForm
                 requestType = "put"
                 articleID = {this.props.match.params.articleID}
-                btnText = "udate"
+                btnText = "update"
                 />
             </div>
         )

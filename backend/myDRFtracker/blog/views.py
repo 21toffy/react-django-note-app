@@ -1,4 +1,5 @@
 from rest_framework import generics
+# from rest_framework.permissions import AllowAny
 
 
 from django.http import HttpResponseRedirect, HttpResponse
@@ -19,11 +20,13 @@ from rest_framework.views import APIView
 
 
 
+# @permission_classes((AllowAny, ))
 
 class BlogListCreateView(generics.ListCreateAPIView): 
     queryset = Blog.objects.all() 
     serializer_class = BlogSerializer
 
+# @permission_classes((AllowAny, ))
 class BlogRetrieveView(generics.RetrieveUpdateDestroyAPIView): 
     queryset = Blog.objects.all() 
     serializer_class = BlogSerializer

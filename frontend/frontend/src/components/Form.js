@@ -5,40 +5,60 @@ import axios from 'axios';
 // const FormItem = Form.Item;
 class CustomForm extends React.Component {
   constructor(props){
-    super(props);
-    
-    this.state = {
-      title:'',
-      content:''
-    };
-    this.change = this.change.bind(this);
-    this.submit = this.submit.bind(this);
-  }
-
-  submit(e){
-    e.preventDefault();
-    axios.post("http://127.0.0.1:8000/blog/", {
-      title:this.state.title,
-      content:this.state.content
-    }).then(response => {console.log(response.this.state);}).catch(err => console.error(err));
+        super(props);
+        
+        this.state = {
+         titleContent: {
+          title:'',
+          content:''
+         }
+        };
+        this.submit = this.submit.bind(this);
       }
+   
+    componentDidMount() {
+      if (this.props.data) {
+        const { title, content } = this.props.data;
+        this.setState({ title, content });
+      }
+      this.refreshList();
+    }
 
-      change = e => {
+    refreshList = ()=>{
+      axios.get('http://127.0.0.1:8000/blog/')
+      .then(res =>{
+          this.setState({
+            titleContent:res.data
+          })
+      })
+  }
+    
+
+  submit = (e) => {
+    
+    axios.post("http://127.0.0.1:8000/blog/", this.state).then(res => this.state).catch(err => console.error(err));
+};
+      change = async e => {
         this.setState({
           [e.target.name]: e.target.value
         });
         console.log(e.target.value);
         // alert(e.target.value);
       }
-  
-  
 
+      defaultIfEmpty = value => {
+        return value === "" ? "" : value;
+      };
+      editItem = e => {
+        e.preventDefault();
+        axios.put(`http://127.0.0.1:8000/blog/${e.articleID}/`, this.state).then(response => {console.log(response.data);}).catch(err => console.error(err));
+      };
 
 render(){
   return(
     <div>
-      <form onSubmit = {e => this.submit}>
-        <label>title</label><input type= 'text' name = "title" onChange ={e =>this.change(e)} value = {this.state.title}/>
+      <form onSubmit = {this.editItem}>
+        <label>title</label><input type= 'text' name = "title" onChange ={this.change} value = {this.state.title}/>
 
         <label>content</label><input type= 'text' name = "content" onChange ={e =>this.change(e)} value = {this.state.content}/>
 
@@ -113,6 +133,53 @@ render(){
 //     </div>
 //   );
 // };
+
+
+// class CustomForm extends React.Component {
+//   constructor(props){
+//     super(props);
+    
+//     this.state = {
+//       title:'',
+//       content:''
+//     };
+//     this.change = this.change.bind(this);
+//     this.submit = this.submit.bind(this);
+//   }
+
+//   submit(e){
+//     e.preventDefault();
+//     axios.post("http://127.0.0.1:8000/blog/", {
+//       title:this.state.title,
+//       content:this.state.content
+//     }).then(response => {console.log(response.this.state);}).catch(err => console.error(err));
+//       }
+
+//       change = e => {
+//         this.setState({
+//           [e.target.name]: e.target.value
+//         });
+//         console.log(e.target.value);
+//         // alert(e.target.value);
+//       }
+  
+  
+
+
+// render(){
+//   return(
+//     <div>
+//       <form onSubmit = {e => this.submit}>
+//         <label>title</label><input type= 'text' name = "title" onChange ={e =>this.change(e)} value = {this.state.title}/>
+
+//         <label>content</label><input type= 'text' name = "content" onChange ={e =>this.change(e)} value = {this.state.content}/>
+
+//         <button type="submit">submit</button>
+//       </form>
+//     </div>
+//   );  
+// }}
+
 
 export default CustomForm;
 // export default Login;

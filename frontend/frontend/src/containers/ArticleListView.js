@@ -14,19 +14,23 @@ class ArticleList extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/blog/')
-        .then(res =>{
-            this.setState({
-                articles:res.data
-            })
-        })
+        this.refreshList();
     }
+            refreshList = ()=>{
+            axios.get('http://127.0.0.1:8000/blog/')
+            .then(res =>{
+                this.setState({
+                    articles:res.data
+                })
+            })
+        }
     render() {
         return (
             <div>
                 <Card title ='Create your Notes here'>
                 {/* <h4>Create your Notes here</h4> */}
                 <CustomForm
+                setState={this.props.setState}
                 requestType = "post"
                 articleID = {null}
                 btnText = "Create"
