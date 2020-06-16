@@ -9,6 +9,7 @@ class CustomForm extends React.Component {
         
         this.state = {
          titleContent: {
+          id:'',
           title:'',
           content:''
          }
@@ -34,11 +35,12 @@ class CustomForm extends React.Component {
   }
     
 
-  submit = (e) => {
+  submit = (e, requestType) => {
+    var requestType = 'Post';
     
     axios.post("http://127.0.0.1:8000/blog/", this.state).then(res => this.state).catch(err => console.error(err));
 };
-      change = async e => {
+      change = e => {
         this.setState({
           [e.target.name]: e.target.value
         });
@@ -49,9 +51,11 @@ class CustomForm extends React.Component {
       defaultIfEmpty = value => {
         return value === "" ? "" : value;
       };
-      editItem = e => {
+      editItem = (e, requestType, articleID) => {
+        var requestType = 'Put';
         e.preventDefault();
-        axios.put(`http://127.0.0.1:8000/blog/${e.articleID}/`, this.state).then(response => {console.log(response.data);}).catch(err => console.error(err));
+        axios.put(`http://127.0.0.1:8000/blog/`+this.state.titleContent.id+"/", this.state).then(response => {console.log(response.data);}).catch(err => console.error(err));
+        console.log(this.state.con);
       };
 
 render(){

@@ -27,7 +27,7 @@ class ArticleDetail extends React.Component {
                 <small><br></br><b>{this.state.article.timestamp}</b></small>
                 </Card>
                 <CustomForm
-                requestType = "put"
+                requestType = "Put"
                 articleID = {this.props.match.params.articleID}
                 btnText = "update"
                 />
