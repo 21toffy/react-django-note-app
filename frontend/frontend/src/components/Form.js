@@ -17,8 +17,11 @@ class CustomForm extends React.Component {
     event.preventDefault();
     const title = event.target.elements.title.value;
     const content = event.target.elements.content.value;
+
+    
     console.logo(title, content);
   }
+
   change = e => {
             this.setState({
               [e.target.name]: e.target.value
@@ -34,20 +37,18 @@ class CustomForm extends React.Component {
         <div>
     
     
-          <Form
-            onSubmit={this.handleFormSubmit}
-          >
-            <Form.Item label="Title">
+          <Form onSubmit={this.handleFormSubmit}>
+            <FormItem label="Title">
               <Input onChange={this.change} name="title" placeholder="title here" />
-            </Form.Item>
-            <Form.Item label="content">
+            </FormItem>
+            <FormItem label="content">
               <Input onChange={this.change} name="content" placeholder="some content here" />
-            </Form.Item>
-            <Form.Item>
+            </FormItem>
+            <FormItem>
               <Button type="primary" htmlType="submit">
                submit
               </Button>
-            </Form.Item>
+            </FormItem>
           </Form>
         </div>
       );
@@ -242,5 +243,4 @@ class CustomForm extends React.Component {
   
 
 export default CustomForm;
-// export default Login;
 
