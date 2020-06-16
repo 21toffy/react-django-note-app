@@ -27,15 +27,8 @@ class ArticleList extends React.Component {
     render() {
         return (
             <div>
-                <Card title ='Create your Notes here'>
-                {/* <h4>Create your Notes here</h4> */}
-                <CustomForm
-                setState={this.props.setState}
-                requestType = "post"
-                articleID = {null}
-                btnText = "Create"
-                />
-                </Card>
+                create an article
+                <CustomForm/>
                 <br />
                 <Articles data = {this.state.articles}/>
             </div>
@@ -44,3 +37,23 @@ class ArticleList extends React.Component {
 }
 
 export default ArticleList;
+
+
+
+
+
+// return (
+//     <div>
+//         <Card title ='Create your Notes here'>
+//         {/* <h4>Create your Notes here</h4> */}
+//         <CustomForm
+//         setState={this.props.setState}
+//         requestType = "post"
+//         articleID = {null}
+//         btnText = "Create"
+//         />
+//         </Card>
+//         <br />
+//         <Articles data = {this.state.articles}/>
+//     </div>
+// )
