@@ -36,8 +36,8 @@ class ArticleDetail extends React.Component {
                 articleID = {this.props.match.params.articleID}
                 btnText = "update"
                 />
-                <form onFinish={this.handleDelete}>
-                    <Button type = "danger" htmlType = "submit">Delete</Button>
+                <form onSubmit={this.handleDelete}>
+                    <Button  type = "danger" htmlType = "submit">Delete</Button>
                 </form>
             </div>
         )

@@ -1,7 +1,7 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, button } from "antd";
 import axios from "axios";
-import renderEmpty from "antd/lib/config-provider/renderEmpty";
+// import renderEmpty from "antd/lib/config-provider/renderEmpty";
 // import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 const FormItem = Form.Item;
 //
@@ -13,7 +13,7 @@ class CustomForm extends React.Component {
   };
 
   handleFormSubmit = (event, requestType, articleID) => {
-    event.preventDefault();
+    // event.preventDefault();
     const title = this.state.title;
     const content = this.state.content;
     console.log(title, content);
