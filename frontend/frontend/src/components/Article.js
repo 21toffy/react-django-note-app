@@ -42,7 +42,7 @@ const Articles = (props) => {
                 >
                     <List.Item.Meta
 
-                        title={<a href={`/blog/${item.id}`}>{item.title}</a>}
+                        title={<a href={`/${item.id}`}>{item.title}</a>}
                         // description={item.content}
                         
                     />
