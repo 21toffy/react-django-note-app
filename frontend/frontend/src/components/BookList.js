@@ -35,7 +35,7 @@ class EditableBook extends React.Component{
     }
     handleUpdate = (book) => {
         this.leaveEditMode()
-        book.id === this.props.id;
+        book.id = this.props.id;
         this.props.onUpdateClick(book);
     }
 
@@ -72,4 +72,6 @@ class EditableBook extends React.Component{
             }
 
         
-}
+
+
+export default BookList;
