@@ -30,13 +30,13 @@ class BookForm extends React.Component{
           </label>
           <input type="text" placeholder="Enter a title"
             value={this.state.title} onChange={this.handleTitleUpdate}
-            className="form-control"
-          />
+            className="form-control"/>
         </div>
         <div className="form-group">
           <label>
             Author
           </label>
+          
           <input type="text" placeholder="Author's name"
             value={this.state.author} onChange={this.handleAuthorUpdate}
             className="form-control"

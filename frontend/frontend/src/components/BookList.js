@@ -29,11 +29,11 @@ class EditableBook extends React.Component{
     };
 
     enterEditMode = () =>{
-        this.state( {inEditMode:true});
+        this.setState( {inEditMode:true});
     }
 
     leaveEditMode = () =>{
-        this.state({inEditMode:false});
+        this.setState({inEditMode:false});
     }
     handleUpdate = (book) => {
         this.leaveEditMode()

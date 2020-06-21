@@ -1,5 +1,6 @@
 import React from 'react';
 import BookList from '../components/BookList';
+import ToggleableBookForm from '../components/TogleBook';
 
 
 class BookDashboard extends React.Component{
@@ -52,9 +53,9 @@ class BookDashboard extends React.Component{
                       onDeleteClick={this.deleteBook}
                       onUpdateClick={this.updateBook}
                   ></BookList>
-                  {/* <ToggleableBookForm
+                  <ToggleableBookForm
                       onBookCreate={this.createNewBook}
-                  ></ToggleableBookForm> */}
+                  ></ToggleableBookForm>
               </div>
           </main>
         )

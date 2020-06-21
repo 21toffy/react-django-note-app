@@ -70,7 +70,7 @@ class CustomForm extends React.Component {
             <button  htmlType="submit" type="submit">{this.props.btnText}</button>
           </FormItem>
         </Form>
-      </div>
+       </div>
     );
   }
 }
