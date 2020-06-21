@@ -52,9 +52,9 @@ class BookDashboard extends React.Component{
                       onDeleteClick={this.deleteBook}
                       onUpdateClick={this.updateBook}
                   ></BookList>
-                  <ToggleableBookForm
+                  {/* <ToggleableBookForm
                       onBookCreate={this.createNewBook}
-                  ></ToggleableBookForm>
+                  ></ToggleableBookForm> */}
               </div>
           </main>
         )
