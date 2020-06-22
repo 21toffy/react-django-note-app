@@ -13,8 +13,8 @@ class Book extends React.Component{
           </span>
 
           <div>
-            <span onClick={this.props.onEditClick} className="mr-2">edit<i className="far fa-edit"></i></span>
-            <span onClick={this.props.onDeleteClick}>delete<i className="fas fa-trash"></i></span>
+            <span onClick={this.props.onEditClick} className="mr-2"><i class="fa fa-edit fa-lg" style={{color:"#2196F3"}}></i></span>
+            <span onClick={this.props.onDeleteClick}><i class="fa fa-trash fa-lg" style={{color:"#2196F3"}}></i></span>
           </div>
 
         </div>

@@ -29,7 +29,7 @@ class EditableBook extends React.Component{
     };
 
     enterEditMode = () =>{
-        this.setState( {inEditMode:true});
+        this.setState({inEditMode:true});
     }
 
     leaveEditMode = () =>{

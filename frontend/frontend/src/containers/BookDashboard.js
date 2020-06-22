@@ -26,11 +26,26 @@ class BookDashboard extends React.Component{
             ]
     }
     createNewBook = (book) =>{
-        book.id = Math.floor(Math.random() * 1000);
+        fetch(`http://localhost:8000/api/`, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(book),
+        }).then(response => response.json())
+        // book.id = Math.floor(Math.random() * 1000);
         this.setState({book:this.state.books.concat([book])});
     }
 
     updateBook = (newBook) => {
+        fetch(`http://localhost:8000/api/${newBook.id}/`, {
+        method: 'PUT',
+        headers: {
+                'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBook),
+        }).then(response => response.json())
+
         const newBooks = this.state.books.map(book =>{
             if (book.id ===newBook.id){
                 return Object.assign({}, newBook)
@@ -42,6 +57,12 @@ class BookDashboard extends React.Component{
     }
 
     deleteBook = (bookId) =>{
+        fetch(`http://localhost:8000/api/books/${bookId}/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
         this.setState({books:this.state.books.filter(book => book.id !== bookId)})
     }
     render(){

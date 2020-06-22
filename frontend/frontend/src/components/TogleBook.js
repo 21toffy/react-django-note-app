@@ -36,7 +36,7 @@ class ToggleableBookForm extends React.Component{
     }
     return (
       <button onClick={this.handleCreateClick} className="btn btn-secondary">
-        <i className="fas fa-plus"></i>
+        <i className="fa fa-plus"></i>
       </button>
     );
   }
