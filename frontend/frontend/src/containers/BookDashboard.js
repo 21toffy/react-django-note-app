@@ -5,28 +5,18 @@ import ToggleableBookForm from '../components/TogleBook';
 
 class BookDashboard extends React.Component{
     state = {
-        books:[
-            {
-            id: 1,
-            title: 'A simple book',
-            author: 'Jude Ben',
-            description: `Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud`
-            },
-
-            {
-            id: 2,
-            title: 'A book of secrets',
-            author: 'James John',
-            description: `Sed ut perspiciatis unde omnis iste natus
-                error sit voluptatem accusantium doloremque otam rem iam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                explicabo.` }
-            ]
+        books:[]
     }
+    componentDidMount() {
+        fetch('http://localhost:8000/books/')
+            .then(response => response.json())
+            .then(data => {
+               this.setState({books: data});
+            });
+    }
+
     createNewBook = (book) =>{
-        fetch(`http://localhost:8000/api/`, {
+        fetch(`http://localhost:8000/books/`, {
         method: 'POST',
         headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +28,7 @@ class BookDashboard extends React.Component{
     }
 
     updateBook = (newBook) => {
-        fetch(`http://localhost:8000/api/${newBook.id}/`, {
+        fetch(`http://localhost:8000/books/${newBook.id}/`, {
         method: 'PUT',
         headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +47,7 @@ class BookDashboard extends React.Component{
     }
 
     deleteBook = (bookId) =>{
-        fetch(`http://localhost:8000/api/books/${bookId}/`, {
+        fetch(`http://localhost:8000/books/${bookId.id}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

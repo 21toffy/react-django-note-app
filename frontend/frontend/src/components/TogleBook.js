@@ -20,7 +20,7 @@ class ToggleableBookForm extends React.Component{
     handleCancelClick = (event) =>{
         this.leaveCreateMode();
     }
-    handleFormSubit = (book) =>{
+    handleFormSubmit = (book) =>{
         this.leaveCreateMode();
         this.props.onBookCreate(book);
     }

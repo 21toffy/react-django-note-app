@@ -40,6 +40,12 @@ class EditableBook extends React.Component{
         book.id = this.props.id;
         this.props.onUpdateClick(book);
     }
+    handleDelete = (book) =>{
+        this.leaveEditMode()
+        book.id = this.props.id;
+        this.props.onDeleteClick(book);
+
+    }
 
     render() {
                 const component = () => {

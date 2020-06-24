@@ -11,6 +11,7 @@ class Book extends React.Component{
           <span>
             <strong>Title: </strong>{this.props.title}
           </span>
+          
 
           <div>
             <span onClick={this.props.onEditClick} className="mr-2"><i class="fa fa-edit fa-lg" style={{color:"#2196F3"}}></i></span>

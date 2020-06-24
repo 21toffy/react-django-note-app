@@ -10,11 +10,11 @@ class BookForm extends React.Component{
         event.preventDefault();
         this.props.onFormSubmit({...this.state});
     }
-    handleTileUpdate = (event)=>{
+    handleTitleUpdate = (event)=>{
         this.setState({title:event.target.value});
     }
-    handleAutorUpdate = (event) =>{
-        this.setState({autor:event.target.value});
+    handleAuthorUpdate = (event) =>{
+        this.setState({author:event.target.value});
     }
     handleDescriptionUpdate  = (event) =>{
         this.setState({description:event.target.value});
@@ -41,6 +41,7 @@ class BookForm extends React.Component{
             value={this.state.author} onChange={this.handleAuthorUpdate}
             className="form-control"
           />
+          
         </div>
         <div className="form-group">
           <label>
